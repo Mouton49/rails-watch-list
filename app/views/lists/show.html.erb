@@ -1,10 +1,15 @@
 <h2 class="text-center mt-4 mb-4"><%= @list.name %></h2>
 
-<ul class="list-group">
+<ul class="allcard p-0 mt-5">
   <% @list.bookmarks.each do |bookmark| %>
-    <li class="list-group-item text-center ml-3 mr-3"><strong><%= bookmark.movie.title %></strong> -- "<%= bookmark.comment %>" <%= link_to "Delete movie", bookmark_path(bookmark),
+    <div class ="card d-flex inlin-block">
+      <li class="list-group-item text-center h-100"><img class = "card-img-top" src=<%= bookmark.movie.poster_url%> alt="movietamerelapute">
+      <div class="mt-4">
+        <strong><%= bookmark.movie.title %></strong> -- "<%= bookmark.comment %>" <%= link_to "Delete movie", bookmark_path(bookmark),
                                                                                                                                                             method: :delete,
                                                                                                                                                             data: { confirm: "Are you sure?" }  %></li>
+      </div>
+    </div>
    <% end %>
 </ul>
 
@@ -12,6 +17,6 @@
 <br>
 <br>
 <div class="d-flex justify-content-between ml-3 mr-3">
-  <%= link_to 'Home', lists_path, class: "btn btn-primary text-decoration-none" %>
+  <%= link_to 'Home', root_path, class: "btn btn-primary text-decoration-none" %>
   <%= link_to '+ Add a movie', new_list_bookmark_path(@list), class: "btn btn-primary text-decoration-none" %>
 </div>

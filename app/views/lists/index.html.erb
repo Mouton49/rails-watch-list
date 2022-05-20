@@ -5,13 +5,14 @@
   <h1 class="text-center">Movie Lists</h1>
 </div>
 
-<ul class="allcard p-0">
+<ul class="allcard p-0 mt-3">
   <% @lists.each do |list| %>
-    <li class="card">
-      <div class="pics">
-      </div>
+    <li class="card " style="width: 18rem;">
       <div>
-        <%= link_to list.name, list_path(list), class: "text-decoration-none"%>
+        <%= cl_image_tag list.photo.key, width: 300, height: 230, crop: :fill, class: "card-img-top" %>
+        <div class="d-flex justify-content-center border mt-2">
+          <%= link_to list.name, list_path(list), class: "card-title text-decoration-none text-dark align-middle mb-0"%>
+        </div>
       </div>
     </li>
   <% end %>
